@@ -1,0 +1,16 @@
+{
+  "cash": 50.0,
+  "positions": {},
+  "peak": 50.0,
+  "halted": false,
+  "trades": [],
+  "equity": 50.0,
+  "profit": 0.0,
+  "return_pct": 0.0,
+  "updated": "2026-11-27T00:12:54.995606+00:00",
+  "market_prices": {
+    "BTC": 60497.97,
+    "ETH": 1686.26,
+    "SOL": 70.92
+  }
+}
