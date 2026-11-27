@@ -1,0 +1,38 @@
+name: Project 50 Trading Bot
+
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: project-50
+  cancel-in-progress: false
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run trading simulation
+        run: python trading_bot.py
+
+      - name: Save trading results
+        run: |
+          git config user.name "Project50 Bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add paper_state.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update trading results"
+            git push
+          fi
